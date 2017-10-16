@@ -1,0 +1,3 @@
+[submodule "e2guardian"]
+	path = e2guardian
+	url = http://git.node.knf.local:3000/mirrors/e2guardian.git
