@@ -40,7 +40,7 @@ RUN 	./autogen.sh && \
 
 WORKDIR /etc/e2guardian
 
-RUN mkdir -p certs/generatedcerts
+RUN mkdir -p certs/generatedcerts && chown nobody.nobody certs/generatedcerts
 ADD build/ca.crt /etc/e2guardian/certs/
 ADD build/ca.key /etc/e2guardian/certs/
 ADD build/cert.key /etc/e2guardian/certs/
