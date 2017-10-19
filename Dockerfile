@@ -49,7 +49,9 @@ RUN cd lists && tar zxvf blacklists.tar.gz && rm -f blacklists.tar.gz
 
 EXPOSE 8080
 ADD guard.sh /usr/local/bin/
-RUN chmod 755 /usr/local/bin/guard.sh
+ADD configure.sh /usr/local/bin/
+RUN chmod 755 /usr/local/bin/guard.sh /usr/local/bin/configure.sh
+RUN configure.sh | sort
 ENTRYPOINT [ "/bin/bash" ]
 CMD [ "/usr/local/bin/guard.sh" ]
 
