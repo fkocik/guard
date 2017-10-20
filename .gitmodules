@@ -1,3 +1,18 @@
 [submodule "e2guardian"]
 	path = e2guardian
 	url = http://git.node.knf.local:3000/mirrors/e2guardian.git
+[submodule "libestr"]
+	path = libestr
+	url = http://git.node.knf.local:3000/mirrors/libestr.git
+[submodule "rsyslog"]
+	path = rsyslog
+	url = http://git.node.knf.local:3000/mirrors/rsyslog.git
+[submodule "libfastjson"]
+	path = libfastjson
+	url = http://git.node.knf.local:3000/mirrors/libfastjson.git
+[submodule "liblogging"]
+	path = liblogging
+	url = http://git.node.knf.local:3000/mirrors/liblogging.git
+[submodule "Squid"]
+	path = Squid
+	url = http://git.node.knf.local:3000/mirrors/Squid.git
