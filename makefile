@@ -1,5 +1,5 @@
 DIRTY=$(shell test -z "`git status -s`" && echo "" || echo ".dirty")
-REVISION=$(shell git rev-parse -s HEAD)$(DIRTY)
+REVISION=$(shell git rev-parse --short HEAD)$(DIRTY)
 REG=registry:5000
 
 all:
