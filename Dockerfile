@@ -51,6 +51,7 @@ EXPOSE 8080
 ADD guard.sh /usr/local/bin/
 ADD configure.sh /usr/local/bin/
 RUN chmod 755 /usr/local/bin/guard.sh /usr/local/bin/configure.sh
+RUN find /usr/share/e2guardian/languages -type f -name 'template.html' -exec sed -i 's/YOUR ORG NAME/KNF Guard/' {} \;
 RUN configure.sh | sort
 ENTRYPOINT [ "/bin/bash" ]
 CMD [ "/usr/local/bin/guard.sh" ]
