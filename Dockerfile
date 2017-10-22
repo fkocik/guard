@@ -46,13 +46,14 @@ ADD build/ca.key /etc/e2guardian/certs/
 ADD build/cert.key /etc/e2guardian/certs/
 ADD http://dsi.ut-capitole.fr/blacklists/download/blacklists.tar.gz /etc/e2guardian/lists/
 RUN cd lists && tar zxvf blacklists.tar.gz && rm -f blacklists.tar.gz
+ADD configure.sh /usr/local/bin/
+RUN chmod 755 /usr/local/bin/configure.sh
+RUN configure.sh | sort
+RUN find /usr/share/e2guardian/languages -type f -name 'template.html' -exec sed -i 's/YOUR ORG NAME/KNF Guard/' {} \;
 
 EXPOSE 8080
 ADD guard.sh /usr/local/bin/
-ADD configure.sh /usr/local/bin/
-RUN chmod 755 /usr/local/bin/guard.sh /usr/local/bin/configure.sh
-RUN find /usr/share/e2guardian/languages -type f -name 'template.html' -exec sed -i 's/YOUR ORG NAME/KNF Guard/' {} \;
-RUN configure.sh | sort
+RUN chmod 755 /usr/local/bin/guard.sh
 ENTRYPOINT [ "/bin/bash" ]
 CMD [ "/usr/local/bin/guard.sh" ]
 
