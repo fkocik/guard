@@ -29,14 +29,15 @@ ADD rsyslog.conf /etc/
 
 WORKDIR /usr/src/Squid
 RUN 	./bootstrap.sh && \
-	./configure --libdir=/usr/lib64 --prefix=/usr --sysconfdir=/etc --localstatedir=/var && \
+	./configure --libdir=/usr/lib64 --prefix=/usr --sysconfdir=/etc --localstatedir=/var --with-logdir=/var/log/squid && \
 	make && make install && \
-	chown nobody.nobody /var/logs
+	chown nobody.nobody /var/log/squid
 
 WORKDIR /usr/src/e2guardian
 RUN 	./autogen.sh && \
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libdir=/usr/lib64 --enable-sslmitm=yes && \
-	make && make install
+	make && make install && \
+	chown nobody.nobody /var/log/e2guardian
 
 WORKDIR /etc/e2guardian
 
@@ -50,6 +51,8 @@ ADD configure.sh /usr/local/bin/
 RUN chmod 755 /usr/local/bin/configure.sh
 RUN configure.sh | sort
 RUN find /usr/share/e2guardian/languages -type f -name 'template.html' -exec sed -i 's/YOUR ORG NAME/KNF Guard/' {} \;
+
+VOLUME /var/log
 
 EXPOSE 8080
 ADD guard.sh /usr/local/bin/

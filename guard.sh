@@ -29,7 +29,7 @@ test $? -eq 0 && echo " OK " || echo " Error !"
 sleep 1
 
 echo -n "Starting Proxy daemon"
-squid -s -l daemon
+squid 
 test $? -eq 0 && echo " OK " || echo " Error !"
 sleep 1
 
