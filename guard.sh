@@ -20,6 +20,9 @@ shutdown() {
 trap shutdown INT QUIT TERM
 trap "rm -f /var/run/rsyslog.pid" EXIT
 
+rm -f /var/run/rsyslog.pid
+rm -f /var/run/squid.pid
+
 echo -n "Starting Log daemon"
 rsyslogd
 test $? -eq 0 && echo " OK " || echo " Error !"
@@ -46,10 +49,12 @@ while [ 1 ]; do
 	fi
 	if [ -z "$LOG" ]; then
 		echo "Log daemon failed ... restarting ..."
+		rm -f /var/run/rsyslog.pid
 		rsyslogd
 	fi
 	if [ -z "$SQUID" ]; then
 		echo "Proxy server failed ... restarting ..."
+		rm -f /var/run/squid.pid
 		squid -s -l daemon
 	fi
 	if [ -z "$GUARD" ]; then
