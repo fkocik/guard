@@ -10,7 +10,7 @@
 
 In order to be efficient, the applicance must be connected to a secure search enabled `DNS` server
 that enforces **Google SafeSearch**, **Bing secure**, **Youtube restricted** modes and others
-(see [http://git.node.knf.local:3000/KRIN/bind/src/grandfonds/guard.safe.zone](guard.safe.zone) for
+(see [guard.safe.zone](http://git.node.knf.local:3000/KRIN/bind/src/grandfonds/guard.safe.zone) for
 non exhaustive sample).
 
 ## Deployment
@@ -43,12 +43,12 @@ proxy engine (`docker cp proxy:/etc/e2guardian/certs/ca.crt .`) and install it a
 ### Log analysis
 
 In order to make good control of your children browsing activity, you can deploy a
-**FluentD** log collector using the [fluentd/fluentd.conf](fluentd.conf) sample 
+**FluentD** log collector using the [fluentd.conf](fluentd/fluentd.conf) sample 
 configuration provided in this repository.
 
 The forwarder used in this sample configuration writes collected data in a 3 nodes
 **Elasticsearch** cluster to allow data mining through **Kibana**
-(see [http://git.node.knf.local:3000/mandraxx/docker/src/master/appliances/README.md](KNF Log platform appliance)
+(see [KNF Log Platform appliance](http://git.node.knf.local:3000/mandraxx/docker/src/master/appliances/README.md)
 for details about log analysis tooling).
 
 To externalize log file, starts the proxy engine with a named log volume :
