@@ -60,6 +60,7 @@ RUN chmod 755 /usr/local/bin/guard.sh
 ENTRYPOINT [ "/bin/bash" ]
 CMD [ "/usr/local/bin/guard.sh" ]
 
+RUN echo "cache_mgr fabien@knf.dyndns.org" >> /etc/squid.conf
 RUN rm -f e2guardian.conf e2guardianf1.conf
 ADD e2*.conf /etc/e2guardian/
 ADD whitelist /usr/src/
