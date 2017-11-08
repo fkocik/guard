@@ -62,5 +62,7 @@ CMD [ "/usr/local/bin/guard.sh" ]
 
 RUN rm -f e2guardian.conf e2guardianf1.conf
 ADD e2*.conf /etc/e2guardian/
-
+ADD whitelist /usr/src/
+RUN 	cp /etc/e2guardian/lists/exceptionsitelist /usr/src/exceptionsitelist.ref && \
+	cat /usr/src/whitelist >> /etc/e2guardian/lists/exceptionsitelist
 
