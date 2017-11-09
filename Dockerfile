@@ -39,6 +39,9 @@ RUN 	./autogen.sh && \
 	make && make install && \
 	chown nobody.nobody /var/log/e2guardian
 
+ADD knfinit /usr/src/knfinit
+RUN make -C /usr/src/knfinit all && install -m 0755 /usr/src/knfinit/knfinit /usr/local/bin
+
 WORKDIR /etc/e2guardian
 
 RUN mkdir -p certs/generatedcerts && chown nobody.nobody certs/generatedcerts
@@ -55,8 +58,8 @@ RUN find /usr/share/e2guardian/languages -type f -name 'template.html' -exec sed
 VOLUME /var/log
 
 EXPOSE 8080
-ADD guard.sh /usr/local/bin/
-RUN chmod 755 /usr/local/bin/guard.sh
+ADD guard.sh logger.sh squid.sh e2guardian.sh /usr/local/bin/
+RUN chmod 755 /usr/local/bin/*.sh
 ENTRYPOINT [ "/bin/bash" ]
 CMD [ "/usr/local/bin/guard.sh" ]
 

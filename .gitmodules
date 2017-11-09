@@ -16,3 +16,6 @@
 [submodule "Squid"]
 	path = Squid
 	url = http://git.node.knf.local:3000/mirrors/Squid.git
+[submodule "knfinit"]
+	path = knfinit
+	url = http://git.node.knf.local:3000/forge/knfinit.git
