@@ -1,8 +1,9 @@
 FROM vbatts/slackware
 MAINTAINER Fabien KOCIK <fabien@knf.dyndns.org>
 RUN slackpkg update
-RUN echo y | slackpkg install vim python git automake autoconf make gcc pcre openssl cyrus-sasl ca-certificates perl m4 libtool pkg-config glibc libmpc binutils kernel-headers guile gc libffi flex zlib bison ed
+RUN echo y | slackpkg install vim python git automake autoconf make gcc pcre openssl cyrus-sasl ca-certificates perl m4 libtool pkg-config glibc libmpc binutils kernel-headers guile gc libffi flex zlib bison ed glibc-zoneinfo
 ENV LANG=fr_FR.UTF-8
+RUN ln -fs /usr/share/zoneinfo/Europe/Paris /etc/localtime
 
 ADD libestr /usr/src/libestr
 ADD libfastjson /usr/src/libfastjson
