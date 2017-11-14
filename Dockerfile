@@ -2,7 +2,8 @@ FROM vbatts/slackware
 MAINTAINER Fabien KOCIK <fabien@knf.dyndns.org>
 RUN slackpkg update
 RUN echo y | slackpkg install vim python git automake autoconf make gcc pcre openssl cyrus-sasl ca-certificates perl m4 libtool pkg-config glibc libmpc binutils kernel-headers guile gc libffi flex zlib bison ed glibc-zoneinfo
-ENV LANG=fr_FR.UTF-8
+RUN localedef -i fr_FR -f UTF-8 fr_FR.utf8
+ENV LANG=fr_FR.utf8
 RUN ln -fs /usr/share/zoneinfo/Europe/Paris /etc/localtime
 
 ADD libestr /usr/src/libestr
@@ -62,6 +63,8 @@ EXPOSE 8080
 ADD guard.sh logger.sh squid.sh e2guardian.sh /usr/local/bin/
 RUN chmod 755 /usr/local/bin/*.sh
 ENTRYPOINT [ "/bin/bash" ]
+ARG BUILD_GUARD_VERSION
+ENV GUARD_VERSION $BUILD_GUARD_VERSION
 CMD [ "/usr/local/bin/guard.sh" ]
 
 RUN echo "cache_mgr fabien@knf.dyndns.org" >> /etc/squid.conf

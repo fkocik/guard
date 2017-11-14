@@ -23,7 +23,7 @@ endif
 
 build/image: src Dockerfile rsyslog.conf guard.sh e2guardian.conf build/ca.crt build/ca.key build/cert.key
 	test -d $(@D) || mkdir -p $(@D)
-	docker build --force-rm -t guard .
+	docker build --build-arg BUILD_GUARD_VERSION=$(REVISION) --force-rm -t guard .
 	docker tag guard guard:$(REVISION)
 	touch $@
 
