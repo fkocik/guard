@@ -4,4 +4,4 @@ services:
   - docker
 before_install:
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-script: make
+script: make BRANCH=$TRAVIS_BRANCH _all
