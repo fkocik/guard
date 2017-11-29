@@ -1,6 +1,6 @@
 DIRTY=$(shell test -z "`git status -s`" && echo "" || echo ".dirty")
 REVISION=$(shell git describe --tags --dirty=.dirty)
-REG=registry:5000
+REG=fkocik
 
 all:
 	@$(MAKE) BRANCH=`git status -s -b | sed -r -n 's/^##\s+([^\.]+)\.{3}.*$$/\1/p'` _all

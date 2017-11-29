@@ -1,21 +1,21 @@
 [submodule "e2guardian"]
 	path = e2guardian
-	url = http://git.node.knf.local:3000/mirrors/e2guardian.git
+	url = https://github.com/e2guardian/e2guardian.git
 [submodule "libestr"]
 	path = libestr
-	url = http://git.node.knf.local:3000/mirrors/libestr.git
+	url = https://github.com/rsyslog/libestr.git
 [submodule "rsyslog"]
 	path = rsyslog
-	url = http://git.node.knf.local:3000/mirrors/rsyslog.git
+	url = https://github.com/rsyslog/rsyslog.git
 [submodule "libfastjson"]
 	path = libfastjson
-	url = http://git.node.knf.local:3000/mirrors/libfastjson.git
+	url = https://github.com/rsyslog/libfastjson.git
 [submodule "liblogging"]
 	path = liblogging
-	url = http://git.node.knf.local:3000/mirrors/liblogging.git
+	url = https://github.com/rsyslog/liblogging.git
 [submodule "Squid"]
 	path = Squid
-	url = http://git.node.knf.local:3000/mirrors/Squid.git
+	url = https://github.com/squid-cache/squid.git
 [submodule "knfinit"]
 	path = knfinit
-	url = http://git.node.knf.local:3000/forge/knfinit.git
+	url = https://github.com/fkocik/knfinit.git
