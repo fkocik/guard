@@ -1,5 +1,7 @@
 # KNF Guard : secure WWW for childs
 
+[![Build Status](https://travis-ci.org/fkocik/guard.svg?branch=master)](https://travis-ci.org/fkocik/guard)
+
 ## Architecture
 
 **KNF Guard** is a *Docker* HTTP/HTTPS filtering proxy appliance based on :
